@@ -1,0 +1,303 @@
+:root {
+    --blanco: #ffffff;
+    --black: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisclaro: #dfe9f3
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+.templateGrid {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template:
+        'head  nav' 3rem 'article article' 4rem
+        'main main' 1fr
+        'section section' 4rem
+        'foot foot' 5rem;
+}
+
+.layout-header {
+    background-color: var(--secundario);
+    grid-area: head;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-bottom: 1px solid var(--primario);
+}
+
+.layout-header i {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    padding: 3px 0px 10px 0px;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+}
+
+.layout-article {
+    background-color: var(--primario);
+    grid-area: article;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.button-priority {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.first-button {
+    padding: 5px;
+    width: 90%;
+    font-size: 16px;
+    text-decoration: none;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.menu {
+    background-color: var(--secundario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-bottom: 1px solid var(--primario);
+}
+
+.layout-sidebar {
+    display: none;
+}
+
+.layout-main {
+    display: flex;
+    justify-content: center;
+    grid-area: main;
+    padding: 10px;
+    background-color: var(--blanco);
+}
+
+.container {
+    grid-template-columns: 1fr;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card {
+    border: 1px solid var(--gris);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.card:nth-child(n+2) {
+    display: none;
+}
+
+.card h2 {
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.butonFrame {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.buton {
+    padding: 5px;
+    width: 100%;
+    background-color: var(--primario);
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.buton:hover {
+    background-color: var(--secundario);
+}
+
+.layout-section {
+    background-color: var(--blanco);
+    grid-area: section;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    font-size: 30px;
+}
+
+.layout-footer {
+    background-color: var(--primario);
+    color: var(--black);
+    grid-area: foot;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons-footer {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+
+}
+
+.text-footer {
+    font-size: 1.25rem;
+}
+
+@media (min-width: 576px) {
+    .templateGrid {
+        display: grid;
+        grid-template:
+            [header-left] 'head  article article' 4rem [article-right] [main-left] 'nav main main' 1fr [main-right] [footer-left] 'foot  section section' 5rem [section-right] / 1fr 5fr;
+    }
+
+    .layout-sidebar {
+        background-color: var(--secundario);
+        grid-area: nav;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        padding-left: 10px;
+    }
+
+    .card:nth-child(n+2) {
+        display: inline-flex;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 10px;
+    }
+
+    .card {
+        background-color: white;
+        border: 1px solid var(--primario);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+    .templateGrid {
+        display: grid;
+        grid-template:
+            [header-left] 'head  nav nav' 4rem [nav-right] 
+            [article-left] 'article main main' 1fr [main-right] 
+            [article-left] 'article  section section' 3rem [section-right] 
+            [footer-left] 'foot foot foot' 4rem [footer-right] 
+            / 1fr 5fr;
+    }
+
+    .layout-sidebar {
+        background-color: var(--secundario);
+        grid-area: nav;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: center;
+        align-items: center;
+        padding-left: 10px;
+    }
+
+    .card:nth-child(n+3) {
+        display: none;
+    }
+
+    .layout-main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        grid-area: main;
+        padding: 10px;
+        background-color: var(--blanco);
+    }
+
+
+    .container {
+        grid-template-rows: 1fr;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card {
+        border: 1px solid var(--gris);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .layout-article {
+        background-color: var(--primario);
+        grid-area: article;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .icons-footer {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 1rem;
+
+    }
+}
